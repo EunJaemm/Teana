@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.teana.mapper.MemberMapper">
+	
+	<!-- 3-1. 아이디로 회원정보 조회  -->
+	<select id="getMember" resultType="MemberVO">
+		select * from bora_members where id=#{member_id}
+	</select>
+	
+
+</mapper>
