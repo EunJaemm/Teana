@@ -13,7 +13,7 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Inject
 	private SqlSession session;
-	private final static String NAMESPACE = "com.bora.mapper.MemberMapper";
+	private final static String NAMESPACE = "com.teana.mapper.MemberMapper";
 
 	private static final Logger log = LoggerFactory.getLogger(MemberDAOImpl.class);
 	
