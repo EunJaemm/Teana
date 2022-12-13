@@ -22,6 +22,27 @@ public class MemberServiceImpl implements MemberService {
 		log.info("getMember(member_id) 호출");
 		return dao.getMember(member_id);
 	}
+	
+	@Override
+	public MemberVO getMembername(String member_name) throws Exception {
+		
+		return dao.getMember(member_name);
+	}
+	
+	@Override
+	public int updateMember(MemberVO vo) throws Exception {
+		
+		return dao.updateMember(vo);
+	}
+	
+	
+	@Override
+	public int deleteMember(String id) throws Exception {
+		
+		return dao.deleteMember(id);
+	}
+
+	
 
 
 }

@@ -20,6 +20,25 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public MemberVO getMember(String id) throws Exception {
 		return session.selectOne(NAMESPACE+".getMember", id);
+		
 	}
-
+	
+	@Override
+	public MemberVO getMembername(String name) throws Exception {
+		
+		return session.selectOne(NAMESPACE+".getMemberName", name);
+	}
+	
+	@Override
+	public int updateMember(MemberVO vo) throws Exception {
+		
+		return session.update(NAMESPACE+".updateMember", vo);
+	}
+	
+	@Override
+	public int deleteMember(String id) throws Exception {
+		
+		return session.delete(NAMESPACE+".deleteMember", id);
+	}
+	
 }
