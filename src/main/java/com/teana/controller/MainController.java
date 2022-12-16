@@ -51,8 +51,14 @@ public class MainController {
 		      String encryptPw = SHA256.encrypt(member_pw);
 		      log.info("암호화된 비밀번호: " + encryptPw);
 		      String member_name = request.getParameter("member_name");
-		      String birth = request.getParameter("birth");
-		      String phone = request.getParameter("phone");
+		      int birth = Integer.parseInt(request.getParameter("birth"));
+		      int phone = Integer.parseInt(request.getParameter("phone"));
+		      
+		      vo.setMember_id(member_id);
+		      vo.setMember_pw(encryptPw);
+		      vo.setMember_name(member_name);
+		      vo.setBirth(birth);
+		      vo.setPhone(phone);
 		      
 		      log.info("회원가입 정보: " + vo);
 		        
@@ -65,6 +71,11 @@ public class MainController {
 
 		      return "redirect:/main/login";
 		      
+		}
+		
+		@RequestMapping(value="/nickCheck", method=RequestMethod.POST)
+		public void nickCheckGET() throws Exception {
+			log.info("닉네임 체크하러 이동");
 		}
 		
 		// 로그인 페이지 이동

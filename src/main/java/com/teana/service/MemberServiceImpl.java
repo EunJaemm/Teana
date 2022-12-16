@@ -24,7 +24,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public MemberVO getMembername(String member_name) throws Exception {
+	public MemberVO getMemberName(String member_name) throws Exception {
 		
 		return dao.getMember(member_name);
 	}
@@ -37,9 +37,9 @@ public class MemberServiceImpl implements MemberService {
 	
 	
 	@Override
-	public int deleteMember(String id) throws Exception {
+	public int deleteMember(String member_id) throws Exception {
 		
-		return dao.deleteMember(id);
+		return dao.deleteMember(member_id);
 	}
 
 	

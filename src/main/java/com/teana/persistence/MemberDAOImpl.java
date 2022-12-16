@@ -18,15 +18,15 @@ public class MemberDAOImpl implements MemberDAO {
 	private static final Logger log = LoggerFactory.getLogger(MemberDAOImpl.class);
 	
 	@Override
-	public MemberVO getMember(String id) throws Exception {
-		return session.selectOne(NAMESPACE+".getMember", id);
+	public MemberVO getMember(String member_id) throws Exception {
+		return session.selectOne(NAMESPACE+".getMember", member_id);
 		
 	}
 	
 	@Override
-	public MemberVO getMembername(String name) throws Exception {
+	public MemberVO getMemberName(String member_name) throws Exception {
 		
-		return session.selectOne(NAMESPACE+".getMemberName", name);
+		return session.selectOne(NAMESPACE+".getMemberName", member_name);
 	}
 	
 	@Override
@@ -36,9 +36,9 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	@Override
-	public int deleteMember(String id) throws Exception {
+	public int deleteMember(String member_id) throws Exception {
 		
-		return session.delete(NAMESPACE+".deleteMember", id);
+		return session.delete(NAMESPACE+".deleteMember", member_id);
 	}
 	
 }

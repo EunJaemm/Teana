@@ -47,14 +47,12 @@ public class MemberDAOTest {
 	public void 회원가입() throws Exception{
 		log.info("회원가입()");
 		MemberVO vo = new MemberVO();
-		int birth;
-		int phone;
 		vo.setMember_id("member_id");
 		vo.setMember_pw("member_pw");
 //		vo.setPw(pwEncoder.encode("1234"));
 		vo.setMember_name("member_name");
-		vo.setBirth(birth);
-		vo.setPhone(phone);
+//		vo.setBirth(birth);
+//		vo.setPhone(phone);
 		
 		mainDAO.joinMember(vo);
 		
@@ -63,13 +61,13 @@ public class MemberDAOTest {
 	
 //	@Test 완료
 	public void 로그인() throws Exception {
-		log.info("♡♡♡♡♡♡♡로그인() 호출");
+		log.info("로그인() 호출");
 		MemberVO vo = new MemberVO();
 		vo.setMember_id("member_id");
 		vo.setMember_pw("member_pw");
 		MemberVO vo2 = mainDAO.loginMember(vo);
-		if(vo2 != null) log.info("♡♡♡♡♡♡♡로그인 성공: "+vo);
-		else log.info("♡♡♡♡♡♡♡로그인 실패");
+		if(vo2 != null) log.info("로그인 성공: "+vo);
+		else log.info("로그인 실패");
 	}
 	
 //	@Test 완료
@@ -84,7 +82,7 @@ public class MemberDAOTest {
 		log.info("getMember() 호출");
 		MemberVO vo = dao.getMember("admin");
 		if(vo != null) log.info("♡♡♡♡♡♡♡개인정보 가져오기 성공 : "+vo);
-		else log.info("♡♡♡♡♡♡♡개인정보 가져오기 실패");
+		else log.info("개인정보 가져오기 실패");
 	}
 	
 //	@Test

@@ -6,7 +6,7 @@ public interface MemberService {
 	
 	public MemberVO getMember(String member_id) throws Exception;
 	
-	public MemberVO getMembername(String name) throws Exception;
+	public MemberVO getMemberName(String member_name) throws Exception;
 	
 	public int updateMember(MemberVO vo) throws Exception;
 	
