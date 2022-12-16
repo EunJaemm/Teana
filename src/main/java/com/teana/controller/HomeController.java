@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class HomeController {
-	@Inject
-	private NoticeService noticeService;
+	
 	
 	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 	

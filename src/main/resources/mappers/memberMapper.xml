@@ -7,8 +7,26 @@
 	
 	<!-- 3-1. 아이디로 회원정보 조회  -->
 	<select id="getMember" resultType="MemberVO">
-		select * from bora_members where id=#{member_id}
+		select * from teana where id=#{member_id}
 	</select>
+	
+	<!-- 3-2. 닉네임으로 회원정보 조회 -->
+	<select id="getMemberName" resultType="MemberVO">
+		select * from teana where member_name=#{member_name}
+	</select>
+	
+	<!-- 4. 회원정보 수정 -->
+	<update id="updateMember" >
+		update teana set pw=#{member_pw}, member_name=#{member_name}, 
+		phone=#{phone}
+		where member_id=#{member_id}
+	</update>
+	
+	<!-- 5. 회원 탈퇴 -->
+	<delete id="deleteMember">
+		delete from teana where member_id=#{member_id}
+	</delete>
+	
 	
 
 </mapper>
