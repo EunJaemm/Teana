@@ -13,13 +13,32 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Inject
 	private SqlSession session;
-	private final static String NAMESPACE = "com.bora.mapper.MemberMapper";
+	private final static String NAMESPACE = "com.teana.mapper.MemberMapper";
 
 	private static final Logger log = LoggerFactory.getLogger(MemberDAOImpl.class);
 	
 	@Override
-	public MemberVO getMember(String id) throws Exception {
-		return session.selectOne(NAMESPACE+".getMember", id);
+	public MemberVO getMember(String member_id) throws Exception {
+		return session.selectOne(NAMESPACE+".getMember", member_id);
+		
 	}
-
+	
+	@Override
+	public MemberVO getMemberName(String member_name) throws Exception {
+		
+		return session.selectOne(NAMESPACE+".getMemberName", member_name);
+	}
+	
+	@Override
+	public int updateMember(MemberVO vo) throws Exception {
+		
+		return session.update(NAMESPACE+".updateMember", vo);
+	}
+	
+	@Override
+	public int deleteMember(String member_id) throws Exception {
+		
+		return session.delete(NAMESPACE+".deleteMember", member_id);
+	}
+	
 }
