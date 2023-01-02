@@ -73,7 +73,7 @@ public class MainController {
 		      
 		}
 		
-		@RequestMapping(value="/nickCheck", method=RequestMethod.POST)
+		@RequestMapping(value="/nameCheck", method=RequestMethod.POST)
 		public void nickCheckGET() throws Exception {
 			log.info("닉네임 체크하러 이동");
 		}
@@ -105,7 +105,7 @@ public class MainController {
 			if (vo2 != null) {
 				log.info("로그인 성공");
 				session.setAttribute("loginID", vo2.getMember_id());
-				session.setAttribute("nick", vo2.getMember_name());
+				session.setAttribute("name", vo2.getMember_name());
 				rttr.addFlashAttribute("msg", "'"+vo2.getMember_name() + "'님, 환영합니다♡");
 				return "redirect:/main/main";
 			} else {

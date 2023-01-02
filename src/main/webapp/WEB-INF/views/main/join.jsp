@@ -98,8 +98,8 @@ $(document).ready(function(){
     $("#name").change(function(){
 //    	alert('닉네임 중복체크');
         $.ajax({
-         url : "/ajax/nickcheck",
-         data: {'nick':$("#nick").val()},
+         url : "/ajax/namecheck",
+         data: {'name':$("#name").val()},
          success : function(result) {
         	 if(result == "no"){
             //닉네임이 존재할 경우 빨강으로, 아니면 파랑으로 처리하는 디자인

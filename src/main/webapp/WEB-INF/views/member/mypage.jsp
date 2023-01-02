@@ -9,6 +9,32 @@
   
 <!-- ${pageContext.request.contextPath} -->
 
+<%
+String loginID = (String)session.getAttribute("loginID");
+if(loginID==null){%>
+<script>
+    alert("세션값이 만료되어 르그인 페이지로 이동합니다.");
+    location.href="/main/login";
+</script>
+<%} %>
+
+<script>
+$(document).ready(function(){
+	let msg = "${msg}";
+    if (msg != ""){
+    	success(msg);
+    }
+})
+
+function success(msg){
+	Swal.fire({
+		title: '수정 성공!',
+		text: '', /*내용*/
+		icon: 'success' /*아이콘 타입*/
+	});
+}//error 버튼
+</script>
+
 <div class="container">
    <div class="row">
      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
