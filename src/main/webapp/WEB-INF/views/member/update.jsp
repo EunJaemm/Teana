@@ -9,6 +9,145 @@
 
   <!-- Template Main CSS File -->
   <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+  
+<%
+ String loginID = (String)session.getAttribute("loginID");
+if(loginID==null) {%>
+<!-- 세션값(로그인) 확인 -->
+<script>
+// 세션값 여부
+$(document).ready(function() {
+	Swal.fire(
+		"세션값 만료!",
+		"로그인 페이지로 이동합니다."
+	);
+	location.href="/main/login";
+})
+</script>
+<%} %>
+
+<!-- login 성공 메세지 불러오기 -->
+<<script>
+$(document).ready(function(){
+	let msg1 = "${msg1}";
+	let msg2 = "${msg2}";
+//  alert()
+	if(msg1!=""&&msg2!="") {
+		warning(msg1, msg2);
+	}
+ });
+</script>
+
+<!-- login 성공 alert 모달 -->
+<script>
+function warning(message, message2) {
+	Swal.fire({
+	   title: message,
+	   text: message2,
+	   	 confirmButtonColor: '#7A1CF6',
+	   	 icon: 'warning'
+	  })
+}
+</script>
+
+<!-- 비밀번호 유효성 검사 -->
+<script type="text/javascript">
+// 비밀번호 유효성 검사
+function checkpw(){
+	var pw = document.getElementById("pw").value;
+	if(pw.length>7){
+		if(pw.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~,-])/))||
+		   pw.match(/[!,@,#,$,%,^,&,*,?,_,~,-].*[a-zA-Z0-9])/)) {
+			   $(".pwdiv").html("사용 가능한 비밀번호입니다.");
+			   $(".pwdiv").css('color','blue');
+		   }else{
+			   $(".pwdiv").html("비밀번호는 8글자 이상, 16글자 이하만 사용 가능합니다.");
+			   $(".pwdiv").css('color','red');
+			   document.getElementById("pw").value;
+		   }
+	}
+}
+</script>
+
+<!-- 비밀번호 변경 시 이전 비밀번호와 일치 여부 -->]
+<script>
+//비밀번호 유효성 검사 후 이전 비밀번호와 일치 여부 확인
+//alert("비밀번호 중복 여부");
+function pwUdateCheck(){
+// 	alert("비밀번호 중복");
+    $(document).ready(function(){
+    	$.ajax({
+    		type: "post",
+    		url: "/member/pwUpdateCheck",
+    		data: {'pwUpdate':$("#pw").val()},
+    		success: function(result){
+    			if(result=="no"){
+    				$(".pwdiv").html("같은 비밀번호로 변경할 수 없습니다.");
+    				$("#pw").focus();
+    			}
+    		}
+    	});
+    });
+}
+</script>
+
+<!-- 비밀번호 일치 여부 -->
+<script>
+function checkpw2() {
+	if($('#pw').val()!=$('#pw2').val()){
+		$('.pw2div').html('비밀번호가 일치하지 않습니다');
+		$('.pw2div').css('color','red');
+		$('#pw2').focus();
+		document.getElementById("pw2").value="";
+	} else {
+		$(".pw2div").html('비밀번호가 일치합니다.');
+		$('.pw2div').css('color','blue');
+		$('#pw2').focus();
+	}
+}
+
+const autoHyphen = (target) => {
+ target.value = target.value
+ .replace(/[^0-9]/g, '')
+ .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
+ .replace(/(\-{1,2})$/g, "");
+}
+</script>
+
+<!--  아이디 중복체크 후 회원가입 -->
+<script>
+$(document).ready(function(){	     
+// 아이디 중복 체크 했는지 확인하는 플래그
+	var idflag = document.getElementById("idflag");
+// 	alert(idflag.value);
+	
+	$("#nick").change(function(){
+// 		alert('닉네임 중복체크');
+		$.ajax({
+            url : "/member/nickcheck",
+            data: {'nick':$("#nick").val()},
+            success : function(result) {
+            	if(result == "no"){
+		            // 닉네임이 존재할 경우 빨강으로 , 아니면 파랑으로 처리하는 디자인
+		            $(".nickdiv").html("이미 존재하는 닉네임입니다.");
+		            $(".nickdiv").css("color","red");
+		            document.getElementById("nick").value=="";
+		            $("#nick").focus();
+           		} else if(result == "ok"){
+           			$(".namediv").html("사용 가능한 닉네임입니다.");
+           			$(".namediv").css("color", "blue");
+           		} else {
+           			$(".namediv").html("");
+           		}
+            },//success
+            error: function(error){
+            	$(".iddiv").html("에러");
+                return false;
+            }//error
+ 		});//ajax
+	});//nickcheck
+}); //document
+</script>
 
     
 <div class="container">
